@@ -26,9 +26,13 @@ angular.module('starter.controllers', [])
     }];
     var timer = null;
     $scope.isSendingPttMessage = false;
+    let pttStartTime = null;
+
+
     $scope.sendPttMessage = function() {
       $scope.isSendingPttMessage = !$scope.isSendingPttMessage;
       if ($scope.isSendingPttMessage) {
+        pttStartTime = Date.now();
         var len = $scope.messageList.length;
         var user = {
           id: $scope.messageList[len - 1] + 1,
@@ -38,15 +42,19 @@ angular.module('starter.controllers', [])
         }
         $scope.messageList.push(user);
 
-        // timer = $interval(function() {
-        //   if (user.volume == '...') {
-        //     user.volume = '';
-        //   }
-        //   user.volume += '.';
-        // }, 500);
       } else {
         var len = $scope.messageList.length;
+
+        let diffTime = Date.now() - pttStartTime;
+        let duration = Math.ceil(diffTime / 1000);
         $scope.messageList[len - 1].isRecording = false;
+        $scope.messageList[len - 1].duration = duration;
+      }
+    };
+
+    $scope.togglePlayPtt = function(msg) {
+      if (!msg.isRecording) {
+        msg.isPlaying = !msg.isPlaying;
       }
     };
   })

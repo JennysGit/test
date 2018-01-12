@@ -22,8 +22,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 .message-content {
-  padding: 3px 10px;
-  min-width: 80px;
+  padding: 3px 15px 3px 5px;
+  min-width: 100px;
   background: #0092e2;
   color: white;
   border-radius: 5px;
@@ -32,15 +32,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     position: relative;
     border: none;
     min-height: 35px;
-    text-align: left;
+    text-align: right;
   }
   .volume {
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 7px;
     span {
       font-size: 12px;
       width: 30px;
-      display: inline-block;
       text-align: left;
     }
     span.second {
@@ -52,7 +52,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     span.third {
       font-size: 22px;
       position: absolute;
-      top: -7px;
+      top: -7.5px;
       left: 8px;
     }
   }
@@ -63,6 +63,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+// .duration {
+//   position: absolute;
+//   right: 6px;
+//   top: 7px;
+// }
 .volume-play {
   span.second {
     animation: blink 1s infinite step-start;

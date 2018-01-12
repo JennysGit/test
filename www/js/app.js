@@ -28,12 +28,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       template: `<canvas class="voice-container" id="voiceLine{{attrId}}"></canvas>`,
       replace: 'true',
       scope: {
-        attrId: '='
+        attrId: '=',
+        duration: '='
       },
       link: function(scope, eles, attrs) {
 
         eles.ready(function() {
+          let minWidth = 50;
+          let maxWidth = 150;
+          if (scope.duration > 2) {
+            let width = minWidth + ((scope.duration - 2) * 10);
+            width = width > maxWidth ? maxWidth : width;
+            eles.css('width', width + 'px');
+          }
           makeVoiceLine();
+
+          let $pttButton = eles.parent().parent('button.ptt-message');
+          let pttWidth = $pttButton[0].clientWidth;
+          //pttWidth = scope.duration > 2 ? pttWidth + 15 : pttWidth; // 为padding预留15px
+          let pttHeight = $pttButton[0].clientHeight;
+          $pttButton.css('width', pttWidth + 'px').css('height', pttHeight + 'px');
 
         });
 
@@ -43,25 +57,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           var canvas = document.getElementById(canvasId);
           var context = canvas.getContext("2d");
 
+          canvas.width = eles[0].clientWidth * 3;
+          canvas.height = eles[0].clientHeight * 3;
 
-          let canvasWidth = eles[0].clientWidth;
-          let canvasHeight = eles[0].clientHeight;
-
-          canvas.width = canvasWidth;
-          canvas.height = canvasHeight;
-
-          console.log("width", canvasWidth, "height", canvasHeight);
-
-          context.lineWidth = 0.5;
+          context.lineWidth = 2;
           context.strokeStyle = "white";
-          let interval = 5;
+          let interval = 8;
 
-          for (var i = 1; i <= canvasWidth / interval; i++) {
-            var rdm = Math.floor(Math.random() * 10);
+          for (var i = 1; i <= canvas.width / interval; i++) {
+            var rdm = Math.floor(Math.random() * 50);
 
             context.moveTo(interval * i, rdm);
 
-            context.lineTo(interval * i, 30 - rdm);
+            context.lineTo(interval * i, canvas.height - rdm);
 
             context.stroke();
           }

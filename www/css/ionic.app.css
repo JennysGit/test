@@ -9873,8 +9873,8 @@ a.button {
   transition-duration: 0s; }
 
 .message-content {
-  padding: 3px 10px;
-  min-width: 80px;
+  padding: 3px 15px 3px 5px;
+  min-width: 100px;
   background: #0092e2;
   color: white;
   border-radius: 5px;
@@ -9883,14 +9883,14 @@ a.button {
     position: relative;
     border: none;
     min-height: 35px;
-    text-align: left; }
+    text-align: right; }
   .message-content .volume {
-    position: relative;
-    display: inline-block; }
+    position: absolute;
+    left: 10px;
+    top: 7px; }
     .message-content .volume span {
       font-size: 12px;
       width: 30px;
-      display: inline-block;
       text-align: left; }
     .message-content .volume span.second {
       font-size: 18px;
@@ -9900,7 +9900,7 @@ a.button {
     .message-content .volume span.third {
       font-size: 22px;
       position: absolute;
-      top: -7px;
+      top: -7.5px;
       left: 8px; }
   .message-content .voice-container {
     height: 25px;

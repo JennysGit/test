@@ -12,15 +12,16 @@
       <span class="simple-volume">)</span>
     </p>
     <div class="user-chat-message" ng-repeat="msg in messageList track by $index">
-      <button class="ptt-message message-content">
-        <span class="volume" ng-class="{'volume-play': msg.isRecording}" ng-show="msg.isRecording">
+      <button class="ptt-message message-content" ng-click="togglePlayPtt(msg)">
+        <span class="volume volume-play" ng-if="msg.isRecording || msg.isPlaying">
          <span>)</span>
-          <span class="second">)</span>
-          <span class="third">)</span>
+        <span class="second">)</span>
+        <span class="third">)</span>
         </span>
-        <span ng-if="!msg.isRecording">
-          <ptt-voice-line attr-id="$index"></ptt-voice-line>  
+        <span ng-if="!msg.isRecording && !msg.isPlaying">
+          <ptt-voice-line attr-id="$index" duration="msg.duration"></ptt-voice-line>  
        </span>
+       <!-- <span class="play-text" ng-show="msg.isPlaying">回放中</span> -->
         <span class="duration">{{msg.duration}}s</span>
       </button>
     </div>
