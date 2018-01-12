@@ -1,0 +1,117 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+.message-content {
+  padding: 3px 10px;
+  min-width: 80px;
+  background: #0092e2;
+  color: white;
+  border-radius: 5px;
+  margin: 3px 5px 5px;
+  &.ptt-message {
+    position: relative;
+    border: none;
+    min-height: 35px;
+    text-align: left;
+  }
+  .volume {
+    position: relative;
+    display: inline-block;
+    span {
+      font-size: 12px;
+      width: 30px;
+      display: inline-block;
+      text-align: left;
+    }
+    span.second {
+      font-size: 18px;
+      position: absolute;
+      top: -3px;
+      left: 3.5px;
+    }
+    span.third {
+      font-size: 22px;
+      position: absolute;
+      top: -7px;
+      left: 8px;
+    }
+  }
+  .voice-container {
+    height: 25px;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.volume-play {
+  span.second {
+    animation: blink 1s infinite step-start;
+  }
+  span.third {
+    animation: blink-three 1s infinite step-start;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  ,
+  20% {
+    opacity: 1;
+  }
+  ,
+  80%,
+  {
+    opacity: 1;
+  }
+  ,
+  100% {
+    opacity: 0;
+  }
+}
+
+;
+
+@keyframes blink-three {
+  0% {
+    opacity: 0
+  }
+  ,
+  40% {
+    opacity: 0;
+  }
+  ,
+  50% {
+    opacity: 1;
+  }
+  ,
+
+  80% {
+    opacity: 1;
+  }
+  ,
+  100% {
+    opacity: 0;
+  }
+}

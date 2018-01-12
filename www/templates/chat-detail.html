@@ -1,0 +1,28 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{chat.name}}">
+  <ion-content class="padding">
+    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
+    <button class="button button-positive" ng-click="sendPttMessage();"> <span ng-show="!isSendingPttMessage">Add chat message</span><span ng-show="isSendingPttMessage">Messging is Recording</span></button>
+    <p>
+      <span class="simple-volume">)</span>
+    </p>
+    <div class="user-chat-message" ng-repeat="msg in messageList track by $index">
+      <button class="ptt-message message-content">
+        <span class="volume" ng-class="{'volume-play': msg.isRecording}" ng-show="msg.isRecording">
+         <span>)</span>
+          <span class="second">)</span>
+          <span class="third">)</span>
+        </span>
+        <span ng-if="!msg.isRecording">
+          <ptt-voice-line attr-id="$index"></ptt-voice-line>  
+       </span>
+        <span class="duration">{{msg.duration}}s</span>
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
